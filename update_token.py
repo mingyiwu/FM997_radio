@@ -19,6 +19,7 @@
 #    Double click the icon of FM997_onAir.xspf
 #
 
+import os
 import urllib.request
 import re
 
@@ -75,7 +76,7 @@ if __name__ == "__main__":
 
         ## 根據抓到的 url 名稱找尋對應的 xspf 檔案
         ra_match = re.search("ra\d+",url)
-        fn = FILESDICT.get(ra_match.group(0))
+        fn = os.path.join(os.path.dirname(__file__), FILESDICT.get(ra_match.group(0)) )
 
         ## 讀取 xspf 內容
         with open(fn, "r") as f:
